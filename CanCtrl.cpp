@@ -1,5 +1,5 @@
 /*
-   Can.cpp
+   CanCtrl.cpp
 
 */
 #include "CanCtrl.h"
@@ -35,7 +35,9 @@ int GW_Can::begin(uint8_t baudrate, uint8_t canCS, uint8_t interPin) {
   while (repeat >= 0) {
     if (CAN_OK == ptCan->begin(mBaudRate)) {
       pinMode(mInterPin, INPUT);
-      attachInterrupt(digitalPinToInterrupt(interPin), [](){flagCanRx = true;}, FALLING);
+      attachInterrupt(digitalPinToInterrupt(interPin), []() {
+        flagCanRx = true;
+      }, FALLING);
       return 0;
     }
     else {
@@ -86,11 +88,36 @@ void GW_Can::msgTx(const char* msg) {
 
 int GW_Can::msgRx() {
   if (flagCanRx)  {
-
     while (CAN_MSGAVAIL == ptCan->checkReceive())  {
       ptCan->readMsgBuf(&mRxLen, (byte*)mRxBuf);
       mRxId = ptCan->getCanId();
-      sprintf(mInputMsg, "%d %d %d", mRxId, mRxBuf[0], mRxBuf[1]);
+      switch (mRxLen) {
+        case 1 :
+          sprintf(mInputMsg, "%d %d", mRxId, mRxBuf[0]);
+          break;
+        case 2 :
+          sprintf(mInputMsg, "%d %d %d", mRxId, mRxBuf[0], mRxBuf[1]);
+          break;
+        case 3 :
+          sprintf(mInputMsg, "%d %d %d %d", mRxId, mRxBuf[0], mRxBuf[1], mRxBuf[2]);
+          break;
+        case 4 :
+          sprintf(mInputMsg, "%d %d %d %d %d", mRxId, mRxBuf[0], mRxBuf[1], mRxBuf[2], mRxBuf[3]);
+          break;
+        case 5 :
+          sprintf(mInputMsg, "%d %d %d %d %d %d", mRxId, mRxBuf[0], mRxBuf[1], mRxBuf[2], mRxBuf[3], mRxBuf[4]);
+          break;
+        case 6 :
+          sprintf(mInputMsg, "%d %d %d %d %d %d %d", mRxId, mRxBuf[0], mRxBuf[1], mRxBuf[2], mRxBuf[3], mRxBuf[4], mRxBuf[5]);
+          break;
+        case 7 :
+          sprintf(mInputMsg, "%d %d %d %d %d %d %d %d", mRxId, mRxBuf[0], mRxBuf[1], mRxBuf[2], mRxBuf[3], mRxBuf[4], mRxBuf[5], mRxBuf[6]);
+          break;
+        case 8 :
+          sprintf(mInputMsg, "%d %d %d %d %d %d %d %d %d", mRxId, mRxBuf[0], mRxBuf[1], mRxBuf[2], mRxBuf[3], mRxBuf[4], mRxBuf[5], mRxBuf[6], mRxBuf[7]);
+          break;
+      }
+
 #ifdef DEBUG
       DBG_OUTPUT.print("Reception d'un message sur le bus CAN : ");
       DBG_OUTPUT.print("Id: 0x"); DBG_OUTPUT.print((char)mRxId, HEX);
