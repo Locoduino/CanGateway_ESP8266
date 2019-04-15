@@ -55,7 +55,7 @@ Gateway CAN/WiFi/Serial with ESP8266
   Mac adress :.....84:F3:EB:18:76:2C<br>
   DNS :............http://cangw/</p>
 </blockquote>
-<p>P address : 192.168.86.38. L'application devra alors être appelée sur l'URL : http://192.168.86.38/satellite.html</p>
+<p>IP address : 192.168.86.38. L'application devra alors être appelée sur l'URL : http://192.168.86.38/satellite.html</p>
 <p>En manipulant les boutons et sliders, les informations de positions sont envoyées en temps réel et seront visibles dans la fenêtre du moniteur sous cette forme :</p>
 <p>Wifi [0] get Text: 0x1FFFFF21 1 3 0x1 0x12 0x73</p>
 <p>Il s'agit  d'un message CAN avec un identifiant sur 11 bits (0x1FFFFF21) avec 3 octets de données (0x1 0x12 0x73).</p>
