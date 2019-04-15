@@ -3,7 +3,7 @@ Gateway CAN/WiFi/Serial with ESP8266
 
 <h1>Passerelle CAN/WiFI/Serial sur ESP8266</h1>
 <p>Cette passerelle permet d'interconnecter un bus CAN avec un réseau en Ethernet et/ou WiFi mais également en utilisant le port série de l'ESP8266.</p>
-<p><img src="http://www.locoduino.org/local/cache-vignettes/L500xH326/locoduino_wifi_can-gatewayesp8266_nirenmcp2515_dsc6798-33ae1.jpg?1548598275"  height="398" width="610"></p>></p>
+<p><img src="http://www.locoduino.org/local/cache-vignettes/L500xH326/locoduino_wifi_can-gatewayesp8266_nirenmcp2515_dsc6798-33ae1.jpg?1548598275"  height="398" width="610"></p></p>
 <p>Ce projet est compatible avec la norme CAN V2.0B et permet d'utiliser des identifiants standards à 11 bits ou étendus à 29 bits.</p>
 <p>La bibliothèque utilisée est CAN_BUS_Shield de Seeed-Studio <strong>modifiée par Locoduino</strong> et disponible ici : <a href="https://github.com/Locoduino/CAN_BUS_Shield">https://github.com/Locoduino/CAN_BUS_Shield</a></p>
 <p>Le projet est encore en cours de développement mais néanmoins opérationnel.</p>
