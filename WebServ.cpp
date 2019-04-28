@@ -18,11 +18,11 @@ void GW_WebServ::start() { // Start WebSocket server
   
   ESP8266WebServer GW_WebServ(mPort);
 
-  GW_WebServ::on("/" , [&]() {
+  GW_WebServ::on("/" , [this]() {
     GW_WebServ::send(200, "text/plain", "this works as well");
   });
 
-  GW_WebServ::onNotFound([&]() {
+  GW_WebServ::onNotFound([this]() {
     !Files::handleFileRead(this);
   });
 
