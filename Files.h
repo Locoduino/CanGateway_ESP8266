@@ -15,7 +15,7 @@
 
 struct Files {
 
-  static ESP8266WebServer *webServer;
+  //static ESP8266WebServer *webServer;
   static void begin();
   static bool handleFileRead(ESP8266WebServer *);
   static String getContentType(String);
